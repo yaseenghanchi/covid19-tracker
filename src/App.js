@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {fetchData} from './components/service';
 
@@ -16,33 +16,21 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 
- async componentDidMount(){
-   const data = await fetchData();
-   console.log(data);
- }
+const [apiData, setApiData] = useState({});
 
+useEffect(()=>{
+  const datafromApi = async () =>{
+    const data = await fetchData();
+    setApiData(data);
+  }
 
-  const classes = useStyles();
-
-
-
+  datafromApi();
+},[])
 
   return (
     <>
     <Header/>
-    <Cards />
-    {/* <div className={classes.root}>
-    <Grid container spacing={3}>
-      <Grid item xs>
-
-      </Grid>
-      <Grid item xs>
-      </Grid>
-      <Grid item xs>
-      </Grid>
-    
-    </Grid>
-    </div> */}
+    <Cards data={apiData} />
     </>
   );
 }
