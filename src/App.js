@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {fetchData} from './components/service';
 
 import Header from './components/header';
 import Cards from './components/content/cards/cards'
@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+
+ async componentDidMount(){
+   const data = await fetchData();
+   console.log(data);
+ }
 
 
   const classes = useStyles();
