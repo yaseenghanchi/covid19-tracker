@@ -34,7 +34,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         return 'Fetching data from Api...'
     }
     return (
-        <div>
+        <div className={styles.container}>
             <Grid container spacing={3} justify="center">
                 <Grid item component={Card} className={cx(classes.infected, styles.card)}>
                     <CardContent>
