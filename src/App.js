@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Suspense} from 'react';
 import style from './index.css';
 import {fetchData} from './components/service';
 
@@ -34,9 +34,11 @@ const handleCountryChange = async (country) =>{
     <Header handleCountryChange={handleCountryChange} />
     <br/><br/>
    <div className={style.container}>
-    <Cards data={apiData} />
+   <Suspense fallback={<h1>LOADING..</h1>}>
+   <Cards data={apiData} />
     <br/>
     <Chart data={apiData} country={countryData} />
+   </Suspense>
    </div>
     </>
   );
